@@ -1,0 +1,36 @@
+﻿@model AddToSeriesViewModel
+
+@{ 
+    ViewData["Title"] = "Add Book to Series";
+}
+
+<h2>Add a book to @Model.Name</h2>
+<form asp-action="AddBook" method="post">
+    @if (Model.Books.Count == 0)
+    {
+        <h3>There are no additional books by @Model.AuthName</h3>
+        <a asp-controller="Book" asp-action="Edit" class="btn btn-primary">Add New Book</a>
+    }
+    else
+    {
+    <div class="form-group row">
+        <label class="col-sm-3">Choose a book</label>
+
+
+
+        <select asp-for="BkId"
+                asp-items="@(new SelectList(Model.Books,
+                                                    "Key", "Value"))"
+                class="form-control col-sm-7">
+        </select>
+        }
+    </div>
+    <div class="form-group row">
+        <label asp-for="SrsNum" class="col-sm-3">Number in Series</label>
+        <input asp-for="SrsNum" class="form-control col-sm-7" />
+    </div>
+    <input type="hidden" asp-for="SrsId" />
+    <button type="submit" class="btn btn-primary">Add Book</button>
+    }
+    <a asp-controller="Series" asp-action="Details" asp-route-id="@Model.SrsId" class="btn btn-primary">Cancel</a>
+</form>

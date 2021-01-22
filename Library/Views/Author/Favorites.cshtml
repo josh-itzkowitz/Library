@@ -1,0 +1,35 @@
+﻿@model List<Author>
+
+@{
+    ViewData["Title"] = "Favorite Authors";
+}
+
+<h2>Favorite Authors</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Name</th><th>Gender</th><th></th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>               
+                <td>@author.Name</td>
+                <td>@(author.Gender == 0 ? "Male" : "Female")</td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Author" asp-action="Favorite"
+                       asp-route-id="@author.AuthorId">Remove from Favorites</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Author" asp-action="Details"
+                       asp-route-id="@author.AuthorId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a class="btn btn-primary" asp-controller="Author" asp-action="AddFavorite">Add Author to Favorite</a>
+    <a class="btn btn-primary" asp-controller="Author" asp-action="Edit">Add Author</a>
+</div>

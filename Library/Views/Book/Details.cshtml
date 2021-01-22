@@ -1,0 +1,39 @@
+﻿@model Book
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h2>@Model.Title</h2>
+<div class="row">
+    <label asp-for="Author.Name" class="col-2">Author:</label>
+    <label asp-for="Author.Name" class="col-4">@Model.Author.Name</label>
+</div>
+<div class="row">
+    <label asp-for="Genre.Name" class="col-2">Genre:</label>
+    <label asp-for="Genre.Name" class="col-4">@Model.Genre.Name</label>
+</div>
+<div class="row">
+    <label asp-for="ReleaseDate" class="col-2">Release Date:</label>
+    <label asp-for="ReleaseDate" class="col-4">@Model.ReleaseDate.ToShortDateString()</label>
+</div>
+<div class="row">
+    <label asp-for="Bookshelf" class="col-2">Bookshelf:</label>
+    <label asp-for="Bookshelf" class="col-4">
+        @if(Model.Bookshelf == 0) { <text>Reading</text>}
+        else if(Model.Bookshelf == 1) { <text>Read</text>}
+        else { <text>To Be Read</text>}
+    </label>
+</div>
+<div class="row">
+    <label asp-for="Favorite" class="col-2">Favorite:</label>
+    <label asp-for="Favorite" class="col-4">@(Model.Favorite == true ? "Yes":"No")</label>
+</div>
+<div class="row">
+    <label asp-for="Series" class="col-2">Series:</label>
+    <label asp-for="Series" class="col-4">@(Model.SeriesId == null ? "Not part of a series" : Model.Series.Name)</label>
+</div>
+<div>
+    <a class="btn btn-primary" asp-controller="Book" asp-action="Edit"
+       asp-route-id="@Model.BookId">Edit</a>
+    <a class="btn btn-primary" asp-controller="Book" asp-action="List">Back to books</a>
+</div>

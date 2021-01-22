@@ -1,0 +1,41 @@
+﻿@model Author
+@{
+    string title = ViewBag.Title + " Author";
+    ViewData["Title"] = title;
+}
+
+
+<h2>@ViewData["Title"]</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <label asp-for="FirstName" class="col-sm-3">First Name</label>
+        <input asp-for="FirstName" class="form-control col-sm-7" />
+        <span asp-validation-for="FirstName" class="text-danger col-sm-2"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="LastName" class="col-sm-3">Last Name</label>
+        <input asp-for="LastName" class="form-control col-sm-7" />
+        <span asp-validation-for="LastName" class="text-danger col-sm-2"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Gender" class="col-sm-3">Gender</label>
+        <input type="radio" asp-for="Gender" value="0" checked/>Male &nbsp;
+        <input type="radio" asp-for="Gender" value="1" />Female
+        <span asp-validation-for="Gender" class="text-danger col-sm-2"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="DOB" class="col-sm-3">Date of Birth</label>
+        <input type="date" asp-for="DOB" class="form-control col-sm-7" />
+        <span asp-validation-for="DOB" class="text-danger col-sm-2"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="IsAlive" class="col-sm-3">Alive</label>
+        <input type="radio" asp-for="IsAlive" value="true" checked/>Yes &nbsp;
+        <input type="radio" asp-for="IsAlive" value="false"/>No
+        <span asp-validation-for="IsAlive" class="text-danger col-sm-2"></span>
+    </div>    
+    <input type="hidden" asp-for="AuthorId" />
+    <button type="submit" class="btn btn-primary">@ViewData["Title"]</button>
+    <a asp-controller="Author" asp-action="List" class="btn btn-primary">Cancel</a>
+</form>

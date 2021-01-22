@@ -1,0 +1,17 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<h3>Are you sure you want to delete @Model.Title?</h3>
+
+<form method="post" asp-action="Delete">
+    <input type="hidden" asp-for="BookId" />
+    <input type="hidden" asp-for="Title" />
+
+    <button type="submit" class="btn btn-primary" asp-action="Delete">
+        Delete
+    </button>
+    <a asp-action="List" class="btn btn-primary">Cancel</a>
+</form>

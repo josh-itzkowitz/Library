@@ -1,0 +1,40 @@
+﻿@model Series
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h2>@Model.Name</h2>
+<div class="row">
+    <label asp-for="Author.Name" class="col-2">Author:</label>
+    <label asp-for="Author.Name" class="col-4">@Model.Author.Name</label>
+</div>
+<div class="row">
+    <label asp-for="Genre.Name" class="col-2">Genre:</label>
+    <label asp-for="Genre.Name" class="col-4">@Model.Genre.Name</label>
+</div>
+<div class="row">
+    <label asp-for="NumBooks" class="col-2">Number of Books:</label>
+    <label asp-for="NumBooks" class="col-4">@Model.NumBooks</label>
+</div>
+<h3>Books in @Model.Name series</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Number</th><th>Title</th><th>Release Date</th>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@book.SeriesNum</td>
+                <td>@book.Title</td>
+                <td>@book.ReleaseDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-primary" asp-controller="Series" asp-action="Edit"
+       asp-route-id="@Model.SeriesId">Edit</a>
+    <a class="btn btn-primary" asp-controller="Series" asp-action="AddBook" asp-route-id="@Model.SeriesId">Add a book</a>
+    <a class="btn btn-primary" asp-controller="Author" asp-action="List">Back to series</a>
+</div>

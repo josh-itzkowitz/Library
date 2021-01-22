@@ -1,0 +1,41 @@
+﻿@model List<Book>
+@{
+    ViewBag.Title = "Books List";
+}
+
+<h2>All Books</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Title</th><th>Author</th><th>Genre</th><th></th><th></th><th></th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author.Name</td>
+            <td>@book.Genre.Name</td>
+            <td>@book.ReleaseDate.ToShortDateString()</td>          
+        <td class="text-center">
+            <a class="btn btn-primary" asp-controller="Book" asp-action="Favorite"
+               asp-route-id="@book.BookId">Add to Favorites</a>
+        </td>
+        <td class="text-center">
+            <a class="btn btn-primary" asp-controller="Book" asp-action="Details"
+               asp-route-id="@book.BookId">Details</a>
+        </td>
+        <td class="text-center">
+            <a class="btn btn-primary" asp-controller="Book" asp-action="Edit"
+               asp-route-id="@book.BookId">Edit</a>
+        </td>
+        <td class="text-center">
+            <a class="btn btn-primary" asp-controller="Book" asp-action="Delete"
+               asp-route-id="@book.BookId">Delete</a>
+        </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="Book" asp-action="Edit">Add Book</a>

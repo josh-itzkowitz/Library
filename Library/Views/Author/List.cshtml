@@ -1,0 +1,42 @@
+﻿@model List<Author>
+@{
+    ViewBag.Title = "Author List";
+}
+
+<h2>All Authors</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>First Name</th><th>Last Name</th><th>Gender</th><th>DOB</th><th>Alive</th><th></th><th></th><th></th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.FirstName</td>
+                <td>@author.LastName</td>
+                <td>@(author.Gender == 0 ? "Male" : "Female")</td>
+                <td>@author.DOB.ToShortDateString()</td>
+                <td>@(author.IsAlive == true ? "Yes" : "No")</td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Author" asp-action="Favorite"
+                       asp-route-id="@author.AuthorId">Add to Favorites</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Author" asp-action="Details"
+                       asp-route-id="@author.AuthorId">Details</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Author" asp-action="Edit"
+                       asp-route-id="@author.AuthorId">Edit</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Author" asp-action="Delete"
+                       asp-route-id="@author.AuthorId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="Author" asp-action="Edit">Add Author</a>

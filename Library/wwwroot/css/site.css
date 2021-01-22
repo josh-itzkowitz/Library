@@ -1,0 +1,112 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    font-family: 'Brush Script MT';
+    background: -webkit-linear-gradient(#bf953f, #fbf5b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3em;
+    /*text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #fff, 1px 1px 0 #fff*/
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: black;
+    font-family: 'Book Antiqua'; 
+}
+
+
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.navbar-custom {
+    background-color: #b3cdd1;
+    background-image: linear-gradient(315deg, #5f5e72 0%, #b9b9bd 74%);
+}
+
+body{
+    /*background-image:url(../books-image-fade.jpg);*/
+    background-size:100%;
+}
+
+h2 {
+    font-family: Garamond;
+    /*background: -webkit-linear-gradient(#5f5e72, #b9b9bd);*/
+    /*-webkit-background-clip: text;*/
+    -webkit-text-fill-color: transparent;
+    font-size: 4em;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    font-weight: 200;
+}
+
+/*.list-group-item {
+    background: linear-gradient(315deg, #888791 0%, #b9b9bd 74%);
+}*/
+
+/*.table,
+.table tr,
+.table td {
+    background: -webkit-linear-gradient(#5f5e72, #b9b9bd) !important;
+}*/
+

@@ -1,0 +1,24 @@
+﻿@model Author
+
+@{
+    ViewData["Title"] = "Error: Can't Delete Author";
+}
+
+<h3>If you delete @Model.Name, all their books will be deleted</h3>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Title</th><th></th>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>                
+                <td>@book.Title</td>              
+            </tr>
+        }
+    </tbody>
+</table>
+<input type="hidden" asp-for="Name" />
+<a class="btn btn-primary" asp-controller="Author" asp-action="DeleteBooks" asp-route-id="@Model.AuthorId">Delete All Books</a>
+<a class="btn btn-primary" asp-controller="Author" asp-action="List">Cancel</a>

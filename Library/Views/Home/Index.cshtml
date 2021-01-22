@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="mt-15  rounded">   
+    <h2>Books</h2>
+    <div class="list-group col-sm-6">
+        <a class="list-group-item" asp-controller="Book" asp-action="List">All Books</a>
+        <a class="list-group-item" asp-controller="Book" asp-action="Favorites">Favorite Books</a>
+        <a class="list-group-item" asp-controller="Series" asp-action="List">Book Series</a>
+    </div>        
+    <h2>Authors</h2>
+    <div class="list-group col-sm-6">
+        <a class="list-group-item" asp-controller="Author" asp-action="List">All Authors</a>
+        <a class="list-group-item" asp-controller="Author" asp-action="Favorites">Favorite Authors</a>
+    </div>        
+    <h2>Bookshelves</h2>
+    <div class="list-group col-sm-6">
+        <a class="list-group-item" asp-controller="Bookshelf" asp-action="List" asp-route-filter="read">Already Read</a>
+        <a class="list-group-item" asp-controller="Bookshelf" asp-action="List" asp-route-filter="reading">Currently Reading</a>
+        <a class="list-group-item" asp-controller="Bookshelf" asp-action="List" asp-route-filter="wishlist">Wishlist</a>
+    </div>
+</div>
+

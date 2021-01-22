@@ -1,0 +1,39 @@
+﻿@model Author
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h2>@Model.Name</h2>
+<div class="row">
+    <label asp-for="Gender" class="col-2">Gender:</label>
+    <label asp-for="Gender" class="col-4">@(Model.Gender == 0 ? "Male" : "Female")</label>
+</div>
+<div class="row">
+    <label asp-for="DOB" class="col-2">Date of Birth:</label>
+    <label asp-for="DOB" class="col-4">@Model.DOB.ToShortDateString()</label>
+</div>
+<div class="row">
+    <label asp-for="IsAlive" class="col-2">Alive:</label>
+    <label asp-for="IsAlive" class="col-4">@(Model.IsAlive == true ? "Yes" : "No")</label>
+</div>
+<h3>Books by @Model.Name</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Title</th><th>Genre</th><th>Release Date</th>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Genre.Name</td>
+                <td>@book.ReleaseDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-primary" asp-controller="Author" asp-action="Edit"
+       asp-route-id="@Model.AuthorId">Edit</a>
+    <a class="btn btn-primary" asp-controller="Author" asp-action="List">Back to authors</a>
+</div>

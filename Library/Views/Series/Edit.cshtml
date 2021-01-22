@@ -1,0 +1,45 @@
+﻿@model SeriesEditViewModel
+@{
+    string title = ViewBag.Title + " Series";
+    ViewData["Title"] = title;
+}
+
+
+<h2>@ViewData["Title"]</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <label asp-for="Series.Name" class="col-sm-3">Name</label>
+        <input asp-for="Series.Name" class="form-control col-sm-7" />
+        <span asp-validation-for="Series.Name" class="text-danger col-sm-2"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Series.AuthorId" class="col-sm-3">Author</label>
+        <select asp-for="Series.AuthorId"
+                asp-items="@(new SelectList(Model.Authors,
+                        "AuthorId", "Name"))"
+                class="form-control col-sm-7">
+            <option value="-1">Select an author...</option>           
+        </select>&nbsp;
+        <a class="btn btn-primary" asp-controller="Author" asp-action="Edit">Add New Author</a>
+        <span asp-validation-for="Series.AuthorId" class="text-danger col-sm-2"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Series.NumBooks" class="col-sm-3">Number of Books</label>
+        <input asp-for="Series.NumBooks" class="form-control col-sm-7" />
+        <span asp-validation-for="Series.NumBooks" class="text-danger col-sm-2"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Series.GenreId" class="col-sm-3">Genre</label>
+        <select asp-for="Series.GenreId"
+                asp-items="@(new SelectList(Model.Genres,
+                        "GenreId", "Name"))"
+                class="form-control col-sm-7">
+            <option value="">Select a genre...</option>         
+        </select>
+        <span asp-validation-for="Series.GenreId" class="text-danger col-sm-2"></span>
+    </div>
+    <input type="hidden" asp-for="Series.SeriesId" />
+    <button type="submit" class="btn btn-primary">@ViewData["Title"]</button>
+    <a asp-controller="Series" asp-action="List" class="btn btn-primary">Cancel</a>
+</form>

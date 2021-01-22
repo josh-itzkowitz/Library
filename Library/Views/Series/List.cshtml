@@ -1,0 +1,37 @@
+﻿@model List<Series>
+@{
+    ViewBag.Title = "Series List";
+}
+
+<h2>All Series</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Name</th><th>Author</th><th>Genre</th><th>Number of Books</th><th></th><th></th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var series in Model)
+        {
+            <tr>
+                <td>@series.Name</td>
+                <td>@series.Author.Name</td>
+                <td>@series.Genre.Name</td>
+                <td>@series.NumBooks</td>              
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Series" asp-action="Details"
+                       asp-route-id="@series.SeriesId">Details</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Series" asp-action="Edit"
+                       asp-route-id="@series.SeriesId">Edit</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Series" asp-action="Delete"
+                       asp-route-id="@series.SeriesId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="Series" asp-action="Edit">Add Series</a>
